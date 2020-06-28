@@ -1,6 +1,6 @@
 package stepDefinitions;
 
-import io.cucumber.java.PendingException;
+
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -15,13 +15,14 @@ public class StepDefinitions {
         System.out.println("At landing page");
     }
 
-    @When("^User logins with username and password$")
-    public void user_logins_with_username_and_password() throws Throwable {
-        throw new PendingException();
+    @When("User logins with username {string} and password {string}")
+    public void user_logins_with_username_and_password(String userName, String password) {
+        System.out.println("Username "+ userName);
+        System.out.println("Password "+ password);
     }
 
     @Then("^Home page is displayed$")
     public void home_page_is_displayed() throws Throwable {
-        throw new PendingException();
+        System.out.println("Home page is displayed");
     }
 }
