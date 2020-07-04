@@ -1,11 +1,11 @@
 package stepDefinitions;
 
+import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.cucumber.junit.Cucumber;
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
@@ -23,29 +23,30 @@ import java.util.Properties;
 public class SpiceJetSelectPassengerStepDefinitions extends Base {
     WebDriver driver;
     Properties properties;
-    WebDriverWait wait;
     PageSpiceJetHome pageSpiceJetHome;
+    WebDriverWait wait;
 
     @Before
     public void setup() throws IOException {
-        driver = initializeDriver();
         properties = new Properties();
         FileInputStream fis = new FileInputStream("./src/test/resources/data.properties");
         properties.load(fis);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        //Initialize the page object class.
-        pageSpiceJetHome = new PageSpiceJetHome(driver);
+        System.out.println("in before method");
+        driver = initializeDriver();
     }
 
     @After
     public void tearDown() {
+        System.out.println("in after method");
         driver.quit();
     }
 
     @Given("I am on spicejet homepage")
     public void i_am_on_spicejet_homepage() {
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        //Initialize the page object class.
+        pageSpiceJetHome = new PageSpiceJetHome(driver);
         driver.get(properties.getProperty("spicejet"));
-
     }
 
     @When("I select {int} adult passengers")

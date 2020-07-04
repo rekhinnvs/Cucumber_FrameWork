@@ -1,3 +1,4 @@
+@spicejet
 Feature: Spicejet passenger selection.
   Scenario: Select the number of adult and child passengers.
     Given I am on spicejet homepage
