@@ -5,6 +5,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.cucumber.junit.Cucumber;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
@@ -34,6 +35,11 @@ public class SpiceJetSelectPassengerStepDefinitions extends Base {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         //Initialize the page object class.
         pageSpiceJetHome = new PageSpiceJetHome(driver);
+    }
+
+    @After
+    public void tearDown() {
+        driver.quit();
     }
 
     @Given("I am on spicejet homepage")
